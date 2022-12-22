@@ -93,7 +93,15 @@ app.use(express.urlencoded({ extended: false }));
 
 //=> home page
 app.get("/", (req, res) => {
-  res.render("index");
+  // res.render("index");
+  Post.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render("index", { posts: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.get("/dashboard", (req, res) => {

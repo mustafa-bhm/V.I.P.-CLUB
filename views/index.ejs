@@ -21,7 +21,21 @@
     <p>Logged in as user : <%= currentUser.username %></p>
     <%} %>
     <div class="post-container">
-      <h3>Blogs</h3>
+      <h3>Posts</h3>
+      <% if(posts.length >0){ %> <%posts.forEach(post =>{ %>
+      <div class="post-card">
+        <% if(currentUser){ %>
+        <h2><%=post.author %></h2>
+        <% } else { %>
+        <h2>Anonymous</h2>
+        <%} %>
+
+        <p><%=post.post%></p>
+      </div>
+
+      <% }) %> <%} else { %>
+      <p>ther are no posts to display</p>
+      <% } %>
     </div>
   </body>
 </html>
