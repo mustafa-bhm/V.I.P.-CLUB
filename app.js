@@ -32,6 +32,7 @@ const Post = mongoose.model(
   new Schema(
     {
       author: { type: String, required: true },
+      title: { type: String, required: true },
       post: { type: String, required: true },
     },
     { timestamps: true }
@@ -175,6 +176,19 @@ app.post("/new-post", (req, res) => {
       console.log(err);
     });
   // console.log("pooost", post);
+});
+
+//=> to delete a post
+
+app.get("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  Post.findByIdAndDelete(id)
+    .then((result) => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.listen(3003, () => {

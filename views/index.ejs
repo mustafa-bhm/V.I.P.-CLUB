@@ -25,16 +25,18 @@
       <% if(posts.length >0){ %> <%posts.forEach(post =>{ %>
       <div class="post-card">
         <% if(currentUser){ %>
-        <h2><%=post.author %></h2>
+        <h3>Author: <%=post.author %></h3>
         <% } else { %>
-        <h2>Anonymous</h2>
+        <h2>Author: Anonymous</h2>
         <%} %>
-
+        <h4><%=post.title%></h4>
         <p><%=post.post%></p>
+        <p><%= new Date(post.createdAt).toDateString() %></p>
+        <a class="btn" href="/delete/<%=post.id %>">Delete</a>
       </div>
 
       <% }) %> <%} else { %>
-      <p>ther are no posts to display</p>
+      <p>there are no posts to display 🙁</p>
       <% } %>
     </div>
   </body>

@@ -17,6 +17,8 @@
     <p>Logged in as user : <%= currentUser.username %></p>
     <h2>Create a post</h2>
     <form action="/new-post" method="POST">
+      <label for="title">Title:</label>
+      <input id="title" type="text" name="title" required />
       <label for="post">Your Post</label>
       <input id="post" type="text" name="post" required />
       <input class="hidden" name="author" value="<%= currentUser.username %>" />

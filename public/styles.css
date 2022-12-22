@@ -5,3 +5,15 @@
 .hidden {
   display: none;
 }
+
+.post-card {
+  border: 1px solid;
+}
+.btn {
+  padding: 1rem 1rem;
+  background-color: red;
+  color: #fff;
+  display: block;
+  width: 2rem;
+  cursor: pointer;
+}
