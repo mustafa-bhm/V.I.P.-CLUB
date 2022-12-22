@@ -4,13 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
     <title>Document</title>
   </head>
   <body>
     <nav>
       <a href="/login">Login</a>
       <a href="/register">Register</a>
+      <% if(currentUser){%>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/log-out">Logout</a>
+      <%}%>
     </nav>
     <h1>Home page</h1>
+    <% if(currentUser) { %>
+    <p>Logged in as user : <%= currentUser.username %></p>
+    <%} %>
+    <div class="post-container">
+      <h3>Blogs</h3>
+    </div>
   </body>
 </html>
