@@ -191,6 +191,28 @@ app.get("/delete/:id", (req, res) => {
     });
 });
 
+//=> to edit post
+app.get("/update/:id", (req, res) => {
+  const id = req.params.id;
+  Post.findById(id)
+    .then((result) => {
+      res.render("update", { post: result });
+    })
+    .catch((err) => {
+      res.status(404).render("404", { title: "Blog not found" });
+    });
+});
+app.post("/update/:id", (req, res) => {
+  const id = req.params.id;
+  Post.findByIdAndUpdate(id, req.body)
+    .then((result) => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.listen(3003, () => {
   console.log(`server is running on port ${port}`);
 });

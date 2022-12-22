@@ -33,6 +33,7 @@
         <p><%=post.post%></p>
         <p><%= new Date(post.createdAt).toDateString() %></p>
         <a class="btn" href="/delete/<%=post.id %>">Delete</a>
+        <a class="btn" href="/update/<%=post.id %>">Update</a>
       </div>
 
       <% }) %> <%} else { %>

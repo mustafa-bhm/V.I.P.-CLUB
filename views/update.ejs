@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>update your post</h1>
+    <nav>
+      <a href="/log-out">Logout</a>
+      <a href="/">Homepage</a>
+    </nav>
+    <% if(currentUser) { %>
+    <p>Logged in as user : <%= currentUser.username %></p>
+    <h2>Update a post</h2>
+    <form action="/update/<%=post.id%>" method="POST">
+      <label for="title">Title:</label>
+      <input
+        id="title"
+        type="text"
+        name="title"
+        required
+        value="<%=post.title %>"
+      />
+      <label for="post">Your Post</label>
+      <input
+        id="post"
+        type="text"
+        name="post"
+        required
+        value="<%=post.post %>"
+      />
+      <input class="hidden" name="author" value="<%= currentUser.username %>" />
+      <button>Update</button>
+    </form>
+
+    <%} %>
+  </body>
+</html>
