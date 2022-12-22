@@ -19,7 +19,11 @@
     <h1>Home page</h1>
     <% if(currentUser) { %>
     <p>Logged in as user : <%= currentUser.username %></p>
-    <%} %>
+    <% if(currentUser.id === "63a48c94b073ed35550a3f05") { %>
+    <p>User type : Admin</p>
+    <%} else { %>
+    <p>User type : regular</p>
+    <% } %> <%} %>
     <div class="post-container">
       <h3>Posts</h3>
       <% if(posts.length >0){ %> <%posts.forEach(post =>{ %>
@@ -32,8 +36,13 @@
         <h4><%=post.title%></h4>
         <p><%=post.post%></p>
         <p><%= new Date(post.createdAt).toDateString() %></p>
+        <% if( currentUser && currentUser.id === "63a48c94b073ed35550a3f05" ) {
+        %>
         <a class="btn" href="/delete/<%=post.id %>">Delete</a>
         <a class="btn" href="/update/<%=post.id %>">Update</a>
+        <% } else{ %>
+        <div></div>
+        <% } %>
       </div>
 
       <% }) %> <%} else { %>

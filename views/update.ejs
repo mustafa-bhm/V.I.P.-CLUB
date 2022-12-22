@@ -14,7 +14,7 @@
       <a href="/">Homepage</a>
     </nav>
     <% if(currentUser) { %>
-    <p>Logged in as user : <%= currentUser.username %></p>
+    <p>Logged in as user : <%= currentUser %></p>
     <h2>Update a post</h2>
     <form action="/update/<%=post.id%>" method="POST">
       <label for="title">Title:</label>
@@ -33,7 +33,7 @@
         required
         value="<%=post.post %>"
       />
-      <input class="hidden" name="author" value="<%= currentUser.username %>" />
+      <input class="hidden" name="author" value="<%= currentUser %>" />
       <button>Update</button>
     </form>
 

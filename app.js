@@ -86,6 +86,7 @@ app.use(passport.session());
 // to add user object Locals object under currentUser , so it can be available to all the views
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
+  console.log("useeeer", req.user);
   next();
 });
 app.use(express.urlencoded({ extended: false }));
@@ -108,11 +109,11 @@ app.get("/", (req, res) => {
 app.get("/dashboard", (req, res) => {
   if (req.user) {
     let loggedUser = req.user.username;
-    console.log("looogeduser", loggedUser);
+
     Post.find({ author: loggedUser })
       .sort({ createdAt: -1 })
       .then((result) => {
-        res.render("dashboard", { posts: result });
+        res.render("dashboard", { posts: result, loggedUser: loggedUser });
       })
       .catch((err) => {
         console.log(err);
