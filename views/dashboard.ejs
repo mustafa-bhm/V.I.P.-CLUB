@@ -25,6 +25,27 @@
       <button>Post</button>
     </form>
 
+    <div class="my-posts">
+      <h3>My Posts</h3>
+      <% if(posts.length >0){ %> <%posts.forEach(post =>{ %>
+      <div class="post-card">
+        <% if(currentUser){ %>
+        <h3>Author: <%=post.author %></h3>
+        <% } else { %>
+        <h2>Author: Anonymous</h2>
+        <%} %>
+        <h4><%=post.title%></h4>
+        <p><%=post.post%></p>
+        <p><%= new Date(post.createdAt).toDateString() %></p>
+        <a class="btn" href="/delete/<%=post.id %>">Delete</a>
+        <a class="btn" href="/update/<%=post.id %>">Update</a>
+      </div>
+
+      <% }) %> <%} else { %>
+      <p>You don't have any posts to display 🙁</p>
+      <% } %>
+    </div>
+
     <%} %>
   </body>
 </html>

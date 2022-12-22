@@ -107,7 +107,16 @@ app.get("/", (req, res) => {
 
 app.get("/dashboard", (req, res) => {
   if (req.user) {
-    res.render("dashboard");
+    let loggedUser = req.user.username;
+    console.log("looogeduser", loggedUser);
+    Post.find({ author: loggedUser })
+      .sort({ createdAt: -1 })
+      .then((result) => {
+        res.render("dashboard", { posts: result });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   } else {
     res.send("<h3> you need to log-in/register to see this page</h3>");
   }
