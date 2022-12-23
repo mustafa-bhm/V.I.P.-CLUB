@@ -105,3 +105,43 @@ body {
 .fa-pen-to-square {
   color: rgb(59, 197, 98);
 }
+/* Login form  */
+.body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.form-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+input {
+  padding: 0.5rem 0.3rem;
+  border-radius: 8px;
+  border-style: none;
+  width: 100%;
+}
+.btn-login {
+  background-color: #ea4c89;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  border-style: none;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+}
+.btn-login:hover {
+  opacity: 0.8;
+}
