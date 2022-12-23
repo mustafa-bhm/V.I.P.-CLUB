@@ -24,6 +24,7 @@ const User = mongoose.model(
   new Schema({
     username: { type: String, required: true },
     email: { type: String, required: true },
+    avatar: { type: String, required: true },
     password: { type: String, required: true },
   })
 );
@@ -141,6 +142,7 @@ app.post("/sign-up", (req, res, next) => {
       const user = new User({
         username: req.body.username,
         email: req.body.email,
+        avatar: req.body.avatar,
         password: hashedPassword,
       });
       user
