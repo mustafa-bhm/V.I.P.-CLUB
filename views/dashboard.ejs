@@ -20,7 +20,16 @@
       <label for="title">Title:</label>
       <input id="title" type="text" name="title" required />
       <label for="post">Your Post</label>
-      <input id="post" type="text" name="post" required />
+      <textarea
+        name="post"
+        id="post"
+        cols="30"
+        rows="5"
+        maxlength="80"
+        required
+      >
+Max length 80 Char</textarea
+      >
       <input class="hidden" name="author" value="<%= currentUser.username %>" />
       <button>Post</button>
     </form>

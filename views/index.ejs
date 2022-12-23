@@ -5,49 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
-    <nav>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-      <% if(currentUser){%>
-      <a href="/dashboard">Dashboard</a>
-      <a href="/log-out">Logout</a>
-      <%}%>
-    </nav>
-    <h1>Home page</h1>
-    <% if(currentUser) { %>
-    <p>Logged in as user : <%= currentUser.username %></p>
-    <% if(currentUser.id === "63a48c94b073ed35550a3f05") { %>
-    <p>User type : Admin</p>
-    <%} else { %>
-    <p>User type : regular</p>
-    <% } %> <%} %>
-    <div class="post-container">
-      <h3>Posts</h3>
-      <% if(posts.length >0){ %> <%posts.forEach(post =>{ %>
-      <div class="post-card">
-        <% if(currentUser){ %>
-        <h3>Author: <%=post.author %></h3>
-        <% } else { %>
-        <h2>Author: Anonymous</h2>
-        <%} %>
-        <h4><%=post.title%></h4>
-        <p><%=post.post%></p>
-        <p><%= new Date(post.createdAt).toDateString() %></p>
-        <% if( currentUser && currentUser.id === "63a48c94b073ed35550a3f05" ) {
-        %>
-        <a class="btn" href="/delete/<%=post.id %>">Delete</a>
-        <a class="btn" href="/update/<%=post.id %>">Update</a>
-        <% } else{ %>
-        <div></div>
+    <header class="header">
+      <h2>V.I.P. ONLY</h2>
+      <nav class="navbar">
+        <a class="nav-btn" href="/login">Login</a>
+        <a class="nav-btn" href="/register">Register</a>
+        <% if(currentUser){%>
+        <a class="nav-btn" href="/dashboard">Dashboard</a>
+        <a class="nav-btn" href="/log-out">Logout</a>
+        <%}%>
+      </nav>
+    </header>
+    <div class="container">
+      <% if(currentUser) { %>
+      <div class="user-card">
+        <p>User : <%= currentUser.username %></p>
+        <% if(currentUser.id === "63a48c94b073ed35550a3f05") { %>
+        <p>User type : Admin</p>
+        <%} else { %>
+        <p>User type : V.I.P.</p>
+        <% } %> <%} %>
+      </div>
+      <div class="posts-container">
+        <% if(posts.length >0){ %> <%posts.forEach(post =>{ %>
+        <div class="post-card">
+          <img
+            class="profil-img"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH1BRN3QcUQdbRPquBAp_IG0AWjBz5vpJyTw&usqp=CAU"
+            alt=""
+          />
+          <div class="post-card-right">
+            <h4>Title: <%=post.title%></h4>
+            <p class="post"><%=post.post%></p>
+            <% if(currentUser){ %>
+            <div class="author-date">
+              <h4>By: <%=post.author %></h4>
+              <% } else { %>
+              <h4>Author: Anonymous</h4>
+              <%} %>
+              <p><%= new Date(post.createdAt).toDateString() %></p>
+            </div>
+            <% if( currentUser && currentUser.id === process.env.SUPER_USER) {
+            %>
+            <div>
+              <a class="btn" href="/delete/<%=post.id %>"
+                ><i class="fa-solid fa-trash"></i
+              ></a>
+              <a class="btn" href="/update/<%=post.id %>"
+                ><i class="fa-solid fa-pen-to-square"></i
+              ></a>
+            </div>
+            <% } else{ %>
+            <div></div>
+            <% } %>
+          </div>
+        </div>
+
+        <% }) %> <%} else { %>
+        <p>there are no posts to display 🙁</p>
         <% } %>
       </div>
-
-      <% }) %> <%} else { %>
-      <p>there are no posts to display 🙁</p>
-      <% } %>
     </div>
   </body>
 </html>
