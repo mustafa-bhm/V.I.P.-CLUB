@@ -1,9 +1,16 @@
 * {
-  /* background-color: antiquewhite; */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+}
+body {
+  background: rgb(109, 3, 129);
+  background: linear-gradient(
+    97deg,
+    rgba(109, 3, 129, 1) 8%,
+    rgba(8, 19, 70, 1) 74%
+  );
 }
 .container {
   width: 80vw;
@@ -13,30 +20,33 @@
 /* nav bar */
 
 .header {
-  border: 5px solid red;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin: 2rem;
+  color: #fff;
 }
 .navbar {
   display: flex;
   gap: 0.7rem;
 }
+
 .nav-btn {
   text-decoration: none;
-  color: black;
   padding: 0.8rem 1rem;
-
+  color: #fff;
   border-radius: 7px;
 }
 .nav-btn:hover {
-  background-color: aqua;
+  background-color: rgb(23, 55, 115);
 }
 .user-card {
   width: 10rem;
-  background-color: antiquewhite;
+  /* background-color: rgb(37, 9, 79); */
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 0.3rem;
 }
 
 /*  Posts  */
@@ -46,7 +56,6 @@
 .posts-container {
 }
 .post-card {
-  border: 1px solid;
   width: 70%;
   margin: auto;
   height: 11rem;
@@ -55,7 +64,8 @@
 
   gap: 0.5rem;
   margin-top: 0.8rem;
-  background-color: aquamarine;
+  background-color: rgb(23, 65, 162);
+  color: #fff;
   padding: 1rem 1rem;
   border-radius: 10px;
 
@@ -86,4 +96,12 @@
 .btn {
   color: rgb(18, 17, 17);
   cursor: pointer;
+}
+/* icons */
+.fa-trash {
+  color: rgb(207, 118, 125);
+  margin-right: 1rem;
+}
+.fa-pen-to-square {
+  color: rgb(59, 197, 98);
 }

@@ -24,12 +24,13 @@
     <header class="header">
       <h2>V.I.P. ONLY</h2>
       <nav class="navbar">
-        <a class="nav-btn" href="/login">Login</a>
-        <a class="nav-btn" href="/register">Register</a>
         <% if(currentUser){%>
         <a class="nav-btn" href="/dashboard">Dashboard</a>
         <a class="nav-btn" href="/log-out">Logout</a>
-        <%}%>
+        <%} else {%>
+        <a class="nav-btn" href="/login">Login</a>
+        <a class="nav-btn" href="/register">Register</a>
+        <% } %>
       </nav>
     </header>
     <div class="container">
@@ -47,17 +48,17 @@
         <div class="post-card">
           <img
             class="profil-img"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH1BRN3QcUQdbRPquBAp_IG0AWjBz5vpJyTw&usqp=CAU"
-            alt=""
+            src="https://i.imgur.com/MSWoy5Y.png"
+            alt="avatar"
           />
           <div class="post-card-right">
             <h4>Title: <%=post.title%></h4>
             <p class="post"><%=post.post%></p>
-            <% if(currentUser){ %>
             <div class="author-date">
+              <% if(currentUser){ %>
               <h4>By: <%=post.author %></h4>
               <% } else { %>
-              <h4>Author: Anonymous</h4>
+              <h4>By: Anonymous</h4>
               <%} %>
               <p><%= new Date(post.createdAt).toDateString() %></p>
             </div>
