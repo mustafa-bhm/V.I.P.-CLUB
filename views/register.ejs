@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Register</h1>
-    <form action="/sign-up" method="POST">
-      <label for="email">email</label>
-      <input id="email" type="emai" name="email" />
-      <label for="username">username</label>
-      <input id="username" type="text" name="username" />
-      <label for="password">Password</label>
-      <input id="password" type="password" name="password" />
-      <button>Register</button>
-    </form>
+  <%-include("./partials/header.ejs") %>
+  <body class="body">
+    <div class="form">
+      <h1>Login</h1>
+      <form class="form-login" action="/sign-up" method="POST">
+        <div class="email-input">
+          <label for="email">Email</label>
+          <input id="email" type="emai" name="email" required />
+        </div>
+        <div>
+          <label for="username">Username</label>
+          <input id="username" type="text" name="username" required />
+        </div>
+        <div>
+          <label for="password">Password </label>
+          <input id="password" type="password" name="password" required />
+        </div>
+        <button class="btn-login">Register</button>
+      </form>
+    </div>
   </body>
 </html>

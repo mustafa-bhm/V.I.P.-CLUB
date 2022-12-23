@@ -105,7 +105,7 @@ body {
 .fa-pen-to-square {
   color: rgb(59, 197, 98);
 }
-/* Login form  */
+/* Login & Registration forms  */
 .body {
   height: 100vh;
   display: flex;
@@ -144,4 +144,7 @@ input {
 }
 .btn-login:hover {
   opacity: 0.8;
+}
+.email-input {
+  width: 100%;
 }
