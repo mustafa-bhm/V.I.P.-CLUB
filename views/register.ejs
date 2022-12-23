@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <%-include("./partials/header.ejs") %>
-  <body class="body">
+  <body>
+    <header class="header">
+      <h2>V.I.P. ONLY</h2>
+      <nav class="navbar">
+        <% if(currentUser){%>
+        <a class="nav-btn" href="/dashboard">Dashboard</a>
+        <a class="nav-btn" href="/log-out">Logout</a>
+        <%} else {%>
+
+        <a class="nav-btn" href="/login">Login</a>
+        <a class="nav-btn" href="/">Homepage</a>
+        <% } %>
+      </nav>
+    </header>
     <div class="form">
-      <h1>Login</h1>
+      <h1>Register</h1>
       <form class="form-login" action="/sign-up" method="POST">
         <div class="email-input">
           <label for="email">Email</label>
@@ -16,6 +29,13 @@
         <div>
           <label for="password">Password </label>
           <input id="password" type="password" name="password" required />
+        </div>
+        <h3>Choose an avatar</h3>
+        <div class="avatars">
+          <input type="checkbox" name="avatar" id="avatar1" />
+          <label for="avatar1"></label>
+          <input type="checkbox" name="avatar2" id="avatar2" />
+          <label for="avatar2"></label>
         </div>
         <button class="btn-login">Register</button>
       </form>

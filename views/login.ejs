@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <%-include("./partials/header.ejs") %>
-  <body class="body">
+  <body>
+    <header class="header">
+      <h2>V.I.P. ONLY</h2>
+      <nav class="navbar">
+        <% if(currentUser){%>
+        <a class="nav-btn" href="/dashboard">Dashboard</a>
+        <a class="nav-btn" href="/log-out">Logout</a>
+        <%} else {%>
+
+        <a class="nav-btn" href="/register">Register</a>
+        <a class="nav-btn" href="/">Homepage</a>
+        <% } %>
+      </nav>
+    </header>
     <div class="form">
       <h1>Login</h1>
       <form class="form-login" action="/log-in" method="POST">
