@@ -1,54 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles.css" />
-    <title>Document</title>
-  </head>
+  <%-include("./partials/header.ejs") %>
   <body>
-    <h1>DashBoard</h1>
-    <nav>
-      <a href="/log-out">Logout</a>
-      <a href="/">Homepage</a>
-    </nav>
     <% if(currentUser) { %>
-    <p>Logged in as user : <%= currentUser.username %></p>
-    <h2>Create a post</h2>
-    <form action="/new-post" method="POST">
-      <label for="title">Title:</label>
-      <input id="title" type="text" name="title" required />
+    <header class="header">
+      <h1>DashBoard</h1>
+      <p>User : <%= currentUser.username %></p>
+      <nav class="navbar">
+        <a class="nav-btn" href="/log-out">Logout</a>
+        <a class="nav-btn" href="/">Homepage</a>
+      </nav>
+    </header>
+
+    <form class="new-post-form" action="/new-post" method="POST">
+      <h2>Create a new post</h2>
+      <div>
+        <label for="title">Title:</label>
+        <input id="title" type="text" name="title" required />
+      </div>
+      <div></div>
       <label for="post">Your Post</label>
       <textarea
         name="post"
         id="post"
-        cols="30"
-        rows="5"
+        cols="10"
+        rows="3"
         maxlength="80"
         required
       >
-Max length 80 Char</textarea
+      Max length 80 Char</textarea
       >
       <input class="hidden" name="author" value="<%= currentUser.username %>" />
-      <button>Post</button>
+      <button class="btn-login">SUBMIT</button>
     </form>
 
-    <div class="my-posts">
-      <h3>My Posts</h3>
+    <div class="container">
+      <h3>MY POST</h3>
       <% if(posts.length >0){ %> <%posts.forEach(post =>{ %>
       <div class="post-card">
-        <% if(currentUser){ %>
-        <h3>Author: <%=post.author %></h3>
-        <% } else { %>
-        <h2>Author: Anonymous</h2>
-        <%} %>
-        <h4><%=post.title%></h4>
-        <p><%=post.post%></p>
-        <p><%= new Date(post.createdAt).toDateString() %></p>
+        <img
+          class="profil-img"
+          src="https://i.imgur.com/MSWoy5Y.png"
+          alt="avatar"
+        />
+        <div class="post-card-right">
+          <h4><%=post.title%></h4>
+          <p class="post"><%=post.post%></p>
+          <div class="author-date">
+            <h4>Author: <%=post.author %></h4>
+            <p><%= new Date(post.createdAt).toDateString() %></p>
+          </div>
 
-        <a class="btn" href="/delete/<%=post.id %>">Delete</a>
-        <a class="btn" href="/update/<%=post.id %>">Update</a>
+          <div>
+            <a class="btn" href="/delete/<%=post.id %>"
+              ><i class="fa-solid fa-trash"></i
+            ></a>
+            <a class="btn" href="/update/<%=post.id %>"
+              ><i class="fa-solid fa-pen-to-square"></i
+            ></a>
+          </div>
+        </div>
       </div>
 
       <% }) %> <%} else { %>
