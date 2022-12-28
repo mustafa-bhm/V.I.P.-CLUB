@@ -68,6 +68,7 @@ body {
 .posts-container {
 }
 .post-card {
+  position: relative;
   width: 70%;
   margin: auto;
   height: 11rem;
@@ -107,7 +108,12 @@ body {
   color: rgb(18, 17, 17);
   cursor: pointer;
 }
-
+.delete-update-btns {
+  position: absolute;
+  top: 10;
+  right: 0;
+  margin-right: 1rem;
+}
 /* icons */
 .fa-trash {
   color: rgb(207, 118, 125);

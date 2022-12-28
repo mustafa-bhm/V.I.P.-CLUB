@@ -26,10 +26,10 @@
         id="post"
         cols="10"
         rows="3"
-        maxlength="80"
+        maxlength="180"
         required
       >
-      Max length 80 Char</textarea
+      Max length 180 Char</textarea
       >
       <input class="hidden" name="author" value="<%= currentUser.username %>" />
       <input class="hidden" name="avatar" value="<%= currentUser.avatar %>" />
@@ -50,7 +50,7 @@
             <p><%= new Date(post.createdAt).toLocaleDateString() %></p>
           </div>
 
-          <div>
+          <div class="delete-update-btns">
             <a class="btn" href="/delete/<%=post.id %>"
               ><i class="fa-solid fa-trash"></i
             ></a>
