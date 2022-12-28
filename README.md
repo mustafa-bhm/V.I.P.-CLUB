@@ -2,7 +2,7 @@
 
 An exclusive clubhouse where members can write anonymous posts. Inside the clubhouse, members can see who the author of a post is and when it was posted, but outside they can only see the story and wonder who wrote it.
 
-Live 👉 https://members-only-af6p.onrender.com/
+Live 👉 https://members-only-af6p.onrender.com/ (please allow 30s to 40s for the server to load)
 
 ### Functionality :
 
