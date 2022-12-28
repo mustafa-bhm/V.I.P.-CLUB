@@ -88,7 +88,7 @@ app.use(passport.session());
 // to add user object Locals object under currentUser , so it can be available to all the views
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
-  console.log("useeeer", req.user);
+
   next();
 });
 app.use(express.urlencoded({ extended: false }));
@@ -203,7 +203,6 @@ app.post("/new-post", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-  // console.log("pooost", post);
 });
 
 //=> to delete a post

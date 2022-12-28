@@ -4,28 +4,28 @@ An exclusive clubhouse where members can write anonymous posts. Inside the clubh
 
 ### Functionality :
 
-- Members can :
+Members can :
 
-* View all posts,
-* Create , edit and delete their own post,
-* See the Author and the Date of others posts
+- View all posts,
+- Create , edit and delete their own post,
+- See the Author and the Date of others posts
 
-- Non member can:
+Non members can:
 
-* Only see anonymos posts
+- Only see anonymos posts
 
-- Admin can:
+Admin can:
 
-* See all posts details (author , date...)
-* Create , edit and delete their own post,
-* Create , edit and delete all posts,
+- See all posts details (author , date...)
+- Create , edit and delete their own post,
+- Create , edit and delete all posts,
 
 ### Tech stack
 
-Node.js and Express to build the backend server
-EJS for the Template engine
-MangoDb for the database
-Mongoose as modeling tool for MongoDB
+- Node.js and Express to build the backend server
+- EJS for the Template engine
+- MangoDb for the database
+- Mongoose as modeling tool for MongoDB
 
 ### Homepage non-members
 
