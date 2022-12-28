@@ -65,8 +65,7 @@ body {
   text-align: center;
   color: #fff;
 }
-.posts-container {
-}
+
 .post-card {
   position: relative;
   width: 70%;
@@ -74,7 +73,6 @@ body {
   height: 11rem;
   display: flex;
   flex-direction: row;
-
   gap: 0.5rem;
   margin-top: 0.8rem;
   background-color: rgba(23, 65, 162, 0.539);
@@ -101,7 +99,6 @@ body {
   border-top: 1px solid;
   padding-top: 0.5rem;
   display: flex;
-  /* gap: 1rem; */
   justify-content: space-between;
 }
 .btn {
