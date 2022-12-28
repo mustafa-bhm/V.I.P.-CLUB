@@ -12,24 +12,19 @@
         <a class="nav-btn" href="/log-out">Logout</a>
         <%} else {%>
 
-        <a class="nav-btn" href="/secret">Register</a>
+        <a class="nav-btn" href="/login">Login</a>
 
         <% } %>
       </nav>
     </header>
     <div class="form">
-      <h1>Login</h1>
-      <form class="form-login" action="/log-in" method="POST">
-        <div>
-          <label for="username">Username</label>
-          <input id="username" type="text" name="username" />
+      <h1>Enter secret code</h1>
+      <form class="form-login" action="/register" method="POST">
+        <div class="email-input">
+          <input id="secret" type="text" name="secret" required />
         </div>
 
-        <div>
-          <label for="password">Password </label>
-          <input id="password" type="password" name="password" />
-        </div>
-        <button class="btn-login">login</button>
+        <button class="btn-login">Submit</button>
       </form>
     </div>
   </body>

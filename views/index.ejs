@@ -1,35 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
+  <%-include("./partials/header.ejs") %>
   <body>
     <header class="header">
-      <h2>V.I.P. ONLY</h2>
+      <h2 class="logo">MEMBERS ONLY</h2>
       <nav class="navbar">
         <% if(currentUser){%>
         <a class="nav-btn" href="/dashboard">Dashboard</a>
         <a class="nav-btn" href="/log-out">Logout</a>
         <%} else {%>
         <a class="nav-btn" href="/login">Login</a>
-        <a class="nav-btn" href="/register">Register</a>
+        <a class="nav-btn" href="/secret">Register</a>
         <% } %>
       </nav>
     </header>
@@ -37,30 +18,55 @@
       <% if(currentUser) { %>
       <div class="user-card">
         <p>User : <%= currentUser.username %></p>
-        <% if(currentUser.id === "63a48c94b073ed35550a3f05") { %>
+        <% if(currentUser.id === process.env.SUPER_USER) { %>
         <p>User type : Admin</p>
         <%} else { %>
         <p>User type : V.I.P.</p>
         <% } %> <%} %>
       </div>
       <div class="posts-container">
+        <div class="post-card">
+          <img
+            class="profil-img"
+            src="https://i.imgur.com/Kj5D6T9.png"
+            alt="avatar"
+          />
+          <div class="post-card-right">
+            <h4>Welcome to "Members Only"</h4>
+            <p class="post">
+              Only Registred users can see details of other users posts (Author,
+              Date, Avatar) as well as create, edit and delete their own posts.
+              To register enter this code "batman"
+            </p>
+            <div class="author-date">
+              <h4>By: Mustafa</h4>
+              <p>2022-12-26</p>
+            </div>
+          </div>
+        </div>
         <% if(posts.length >0){ %> <%posts.forEach(post =>{ %>
         <div class="post-card">
+          <% if(currentUser){ %>
+          <img class="profil-img" src="<%=post.avatar %>" alt="avatar" />
+          <% } else { %>
           <img
             class="profil-img"
             src="https://i.imgur.com/MSWoy5Y.png"
             alt="avatar"
           />
+          <%}%>
+
           <div class="post-card-right">
-            <h4>Title: <%=post.title%></h4>
+            <h4><%=post.title%></h4>
             <p class="post"><%=post.post%></p>
             <div class="author-date">
               <% if(currentUser){ %>
               <h4>By: <%=post.author %></h4>
+              <p><%= new Date(post.createdAt).toLocaleDateString() %></p>
               <% } else { %>
               <h4>By: Anonymous</h4>
+              <p>Date N/A</p>
               <%} %>
-              <p><%= new Date(post.createdAt).toDateString() %></p>
             </div>
             <% if( currentUser && currentUser.id === process.env.SUPER_USER) {
             %>
@@ -83,5 +89,6 @@
         <% } %>
       </div>
     </div>
+    <%-include("./partials/footer.ejs") %>
   </body>
 </html>

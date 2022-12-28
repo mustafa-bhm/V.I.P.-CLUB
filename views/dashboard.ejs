@@ -4,11 +4,12 @@
   <body>
     <% if(currentUser) { %>
     <header class="header">
-      <h1>DashBoard</h1>
-      <p>User : <%= currentUser.username %></p>
+      <a class="btn" href="/">
+        <h2 class="logo">MEMBERS ONLY</h2>
+      </a>
+      <p>Welcome <%= currentUser.username %> !</p>
       <nav class="navbar">
         <a class="nav-btn" href="/log-out">Logout</a>
-        <a class="nav-btn" href="/">Homepage</a>
       </nav>
     </header>
 
@@ -31,25 +32,22 @@
       Max length 80 Char</textarea
       >
       <input class="hidden" name="author" value="<%= currentUser.username %>" />
+      <input class="hidden" name="avatar" value="<%= currentUser.avatar %>" />
 
       <button class="btn-login">SUBMIT</button>
     </form>
 
     <div class="container">
-      <h3>MY POST</h3>
+      <h3>MY POSTS</h3>
       <% if(posts.length >0){ %> <%posts.forEach(post =>{ %>
       <div class="post-card">
-        <img
-          class="profil-img"
-          src="https://i.imgur.com/MSWoy5Y.png"
-          alt="avatar"
-        />
+        <img class="profil-img" src="<%=currentUser.avatar%>" alt="avatar" />
         <div class="post-card-right">
           <h4><%=post.title%></h4>
           <p class="post"><%=post.post%></p>
           <div class="author-date">
-            <h4>Author: <%=post.author %></h4>
-            <p><%= new Date(post.createdAt).toDateString() %></p>
+            <h4>By: <%=post.author %></h4>
+            <p><%= new Date(post.createdAt).toLocaleDateString() %></p>
           </div>
 
           <div>
@@ -64,10 +62,10 @@
       </div>
 
       <% }) %> <%} else { %>
-      <p>You don't have any posts to display 🙁</p>
+      <p class="no-posts">You don't have any posts to display 🙁</p>
       <% } %>
     </div>
 
-    <%} %>
+    <%} %> <%-include("./partials/footer.ejs") %>
   </body>
 </html>

@@ -35,6 +35,7 @@ const Post = mongoose.model(
       author: { type: String, required: true },
       title: { type: String, required: true },
       post: { type: String, required: true },
+      avatar: { type: String, required: true },
     },
     { timestamps: true }
   )
@@ -87,7 +88,7 @@ app.use(passport.session());
 // to add user object Locals object under currentUser , so it can be available to all the views
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
-  // console.log("useeeer", req.user);
+  console.log("useeeer", req.user);
   next();
 });
 app.use(express.urlencoded({ extended: false }));
@@ -130,9 +131,24 @@ app.get("/login", (req, res) => {
 });
 
 //=> registration page
-app.get("/register", (req, res) => {
-  res.render("register");
+// to redirect to secret code page
+app.get("/secret", (req, res) => {
+  res.render("check");
 });
+app.get("/register", (req, res) => {
+  res.render("check");
+});
+// check secret code en redirect to registration page
+app.post("/register", (req, res) => {
+  const answer = req.body.secret;
+  const secretCode = process.env.SECRET_CODE;
+  if (answer === secretCode) {
+    res.render("register");
+  } else {
+    res.send("<h3> you need to enter the SECRET CODE to register</h3>");
+  }
+});
+
 //=> create new user
 app.post("/sign-up", (req, res, next) => {
   bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
@@ -182,7 +198,7 @@ app.post("/new-post", (req, res) => {
   post
     .save()
     .then((result) => {
-      res.redirect("/");
+      res.redirect("/dashboard");
     })
     .catch((err) => {
       console.log(err);
@@ -196,7 +212,7 @@ app.get("/delete/:id", (req, res) => {
   const id = req.params.id;
   Post.findByIdAndDelete(id)
     .then((result) => {
-      res.redirect("/");
+      res.redirect("/dashboard");
     })
     .catch((err) => {
       console.log(err);
@@ -218,7 +234,7 @@ app.post("/update/:id", (req, res) => {
   const id = req.params.id;
   Post.findByIdAndUpdate(id, req.body)
     .then((result) => {
-      res.redirect("/");
+      res.redirect("/dashboard");
     })
     .catch((err) => {
       console.log(err);

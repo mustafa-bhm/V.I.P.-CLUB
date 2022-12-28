@@ -3,7 +3,9 @@
   <%-include("./partials/header.ejs") %>
   <body>
     <header class="header">
-      <h2>V.I.P. ONLY</h2>
+      <a class="btn" href="/">
+        <h2 class="logo">MEMBERS ONLY</h2>
+      </a>
       <nav class="navbar">
         <% if(currentUser){%>
         <a class="nav-btn" href="/dashboard">Dashboard</a>
@@ -11,7 +13,7 @@
         <%} else {%>
 
         <a class="nav-btn" href="/login">Login</a>
-        <a class="nav-btn" href="/">Homepage</a>
+
         <% } %>
       </nav>
     </header>
@@ -20,7 +22,7 @@
       <form class="form-login" action="/sign-up" method="POST">
         <div class="email-input">
           <label for="email">Email</label>
-          <input id="email" type="emai" name="email" required />
+          <input id="email" type="email" name="email" required />
         </div>
         <div>
           <label for="username">Username</label>
@@ -33,20 +35,47 @@
         <h3>Choose an avatar</h3>
         <div class="avatars">
           <input
-            type="checkbox"
+            type="radio"
+            class="radio"
             name="avatar"
             id="avatar1"
             value="https://i.imgur.com/aQHVLIP.png"
           />
           <label for="avatar1"></label>
+
           <input
-            type="checkbox"
+            type="radio"
             name="avatar"
             id="avatar2"
             value="https://i.imgur.com/nyLuzzQ.png"
           />
           <label for="avatar2"></label>
+
+          <input
+            type="radio"
+            name="avatar"
+            id="avatar3"
+            value="https://i.imgur.com/Kj5D6T9.png"
+          />
+          <label for="avatar3"></label>
+
+          <input
+            type="radio"
+            name="avatar"
+            id="avatar4"
+            value="https://i.imgur.com/ApdCIdy.png"
+          />
+          <label for="avatar4"></label>
+
+          <input
+            type="radio"
+            name="avatar"
+            id="avatar5"
+            value="https://i.imgur.com/DjHQrcI.png"
+          />
+          <label for="avatar5"></label>
         </div>
+
         <button class="btn-login">Register</button>
       </form>
     </div>
