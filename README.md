@@ -26,7 +26,7 @@ Admin can:
 
 - Node.js and Express to build the backend server
 - EJS for the Template engine
-- MangoDb for the database
+- MongoDb for the database
 - Mongoose as modeling tool for MongoDB
 
 ### Homepage non-members
